@@ -1,0 +1,27 @@
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes blinkTextCursor {
+    from { border-right-color: rgba(255, 0, 0, .75); }
+    to { border-right-color: transparent; }
+}
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid rgba(255, 0, 0, .75); /* The typewriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+        typewriter 4s steps(44) 1s 1 normal both,
+        blinkTextCursor .75s steps(44) infinite normal;
+}
+.typewriter-container {
+    display: inline-block;
+    background-color: black;
+    border: 2px solid red;
+    padding: 0.5rem 1rem;
+    margin-bottom: 2rem; /* Adds space below the text */
+    width: 100%; /* Ensures the black background spans the full width */
+    height: 4rem; /* Fixed height to keep the background area */
+}
