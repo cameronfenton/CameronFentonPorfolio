@@ -18,9 +18,8 @@ class GitHubService
         $this->client = new Client([
             'verify' => !App::environment('local'), // Disable SSL verification only in local environment
         ]);
-        $this->username = 'cameronfenton'; // TODO: Load from .env
-        $this->token = '';    // TODO: Load from .env
-        error_log("github username " . getenv('GITHUB_USERNAME'));
+        $this->username = env('GITHUB_USERNAME');
+        $this->token = env('GITHUB_TOKEN');
     }
 
     public function getProjects()
