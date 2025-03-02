@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Starting deployment..."
+
 # Stash any local changes
 git stash
 
