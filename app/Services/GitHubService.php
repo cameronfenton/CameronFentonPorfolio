@@ -13,6 +13,7 @@ class GitHubService
     protected $username;
     protected $token;
     protected const CACHE_TTL = 3600; // Cache for 1 hour
+    protected const CACHE_KEY = 'github.projects';
 
     public function __construct()
     {
@@ -25,16 +26,21 @@ class GitHubService
 
     public function getProjects()
     {
-        return Cache::remember('github.projects', self::CACHE_TTL, function () {
-            try {
-                $response = $this->fetchFromGitHub();
-                return json_decode($response->getBody(), true);
-            } catch (\Exception $e) {
-                Log::error('GitHub API request failed: ' . $e->getMessage());
-                // Return cached data if available, empty array if not
-                return Cache::get('github.projects', []);
-            }
-        });
+        // First try to fetch fresh data
+        try {
+            $response = $this->fetchFromGitHub();
+            $projects = json_decode($response->getBody(), true);
+            
+            // Update cache with new data
+            Cache::put(self::CACHE_KEY, $projects, self::CACHE_TTL);
+            
+            return $projects;
+        } catch (\Exception $e) {
+            Log::error('GitHub API request failed: ' . $e->getMessage());
+            
+            // If fetch fails, return cached data
+            return Cache::get(self::CACHE_KEY, []);
+        }
     }
 
     protected function fetchFromGitHub()

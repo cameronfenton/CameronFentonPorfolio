@@ -1,11 +1,20 @@
 * text=auto eol=lf
 
+# Language detection
+*.blade.php linguist-language=PHP
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+*.html linguist-vendored
+
+# Diff settings
 *.blade.php diff=html
 *.css diff=css
 *.html diff=html
 *.md diff=markdown
 *.php diff=php
 
+# Export ignore settings
 /.github export-ignore
 CHANGELOG.md export-ignore
 .styleci.yml export-ignore
