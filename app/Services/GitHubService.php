@@ -28,9 +28,8 @@ class GitHubService
     {
         // First try to fetch fresh data
         try {
-            $response = $this->fetchFromGitHub();
-            $projects = json_decode($response->getBody(), true);
-            
+            $projects = $this->fetchFromGitHub();
+
             // Update cache with new data
             Cache::put(self::CACHE_KEY, $projects, self::CACHE_TTL);
             
@@ -45,12 +44,26 @@ class GitHubService
 
     protected function fetchFromGitHub()
     {
-        $url = "https://api.github.com/users/{$this->username}/repos";
+        $url = "https://api.github.com/search/repositories";
         $headers = [
             'Authorization' => "token {$this->token}",
             'Accept' => 'application/vnd.github.v3+json',
         ];
 
-        return $this->client->request('GET', $url, ['headers' => $headers]);
+        // Query params for GitHub API
+        $params = [
+            'query' => [
+                'q' => "user:{$this->username} -repo:{$this->username}/cameronfenton",
+                'sort' => 'updated',
+                'per_page' => 100
+            ]
+        ];
+           
+        // Merge headers with params
+        $options = array_merge(['headers' => $headers], $params);
+        $response = $this->client->request('GET', $url, $options);
+        $result = json_decode($response->getBody(), true);
+        
+        return $result['items'] ?? [];
     }
 }
