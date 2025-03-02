@@ -10,7 +10,3 @@ Route::get('/', function () {
 });
 
 Route::get('projects', [ProjectController::class, 'index']);
-Route::get('resume', [ResumeController::class, 'index']);
-Route::get('/test-env', function () {
-    return env('GITHUB_USERNAME');
-});
