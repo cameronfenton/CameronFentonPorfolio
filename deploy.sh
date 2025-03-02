@@ -25,6 +25,5 @@ php artisan view:clear
 
 # Restart services
 sudo systemctl restart nginx
-sudo systemctl restart php-fpm
 
 echo "Deployment and restart completed successfully!"
