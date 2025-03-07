@@ -36,6 +36,7 @@
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    overflow-wrap: anywhere; /* Add this to handle long words */
 }
 
 .project-title {
@@ -49,6 +50,16 @@
     color: rgb(209, 213, 219);
     margin-bottom: 1rem;
     flex-grow: 1;
+    max-width: 100%; /* Ensure text stays within container */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
 }
 
 .project-footer {
