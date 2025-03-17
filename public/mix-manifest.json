@@ -1,6 +1,7 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/project.css": "/css/project.css",
-    "/css/custom.css": "/css/custom.css",
-    "/css/app.css": "/css/app.css"
+    "/js/app.js": "/js/app.js?id=a9ffc890a6895ebe346ec617f2c20e0a",
+    "/js/theme-toggle.js": "/js/theme-toggle.js?id=256730abf0503f31e2f64e7d1dade369",
+    "/css/project.css": "/css/project.css?id=06935891cb650d44334b620111b6b4a9",
+    "/css/custom.css": "/css/custom.css?id=a8b271c801318312599c6d8eb735085a",
+    "/css/app.css": "/css/app.css?id=6b1290ba417cae576a8a760184a6f901"
 }
