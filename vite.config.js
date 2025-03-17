@@ -8,6 +8,7 @@ export default defineConfig({
             'resources/css/custom.css',
             'resources/css/project.css',
             'resources/js/app.js',
+            'resources/js/theme-toggle.js',
         ]),
     ],
 });
